@@ -1,7 +1,7 @@
 <?php
 
-require_once "../4Capa_Datos/Conexion.php";
-require_once "../2Capa_Negocio/usuario.php";
+require_once "../4_CapaDatos/Conexion.php";
+require_once "../2_CapaNegocio/usuario.php";
 
 class UsuarioDAO{
     private $DataSource;
@@ -12,7 +12,7 @@ class UsuarioDAO{
 
     //CONSULTAR USUARIO POR ID
     public function consultar($id){
-        $sql = "";
+        $sql = "SELECT * FROM usuario WHERE id = :id";
         $values = [
             ':id' => $id
         ];
@@ -22,7 +22,7 @@ class UsuarioDAO{
     //REGISTRAR A UN NUEVO USUARIO EN LA BASE DE DATOS
     public function crear(Usuario $usuario) {
         $sql = "
-            INSERT INTO usuarios
+            INSERT INTO usuario
             (
                 nombre_completo,
                 email,
@@ -65,7 +65,7 @@ class UsuarioDAO{
         $password = $usuario->getPassword() ?? $usuarioActual['password'];
         $pais_origen = $usuario->getPaisOrigen() ?? $usuarioActual['pais_origen'];
     
-        $sql = "UPDATE users 
+        $sql = "UPDATE usuario 
                 SET nombre_completo = :nombre_completo, 
                     email = :email, 
                     username = :username, 
@@ -87,7 +87,7 @@ class UsuarioDAO{
 
     //ELIMINAR REGISTRO DE USUARIO 
 	public function eliminar($id){
-        $sql = "DELETE FROM users WHERE id = :id";
+        $sql = "DELETE FROM usuario WHERE id = :id";
         $values = [
             ':id' => $id
         ];
@@ -96,7 +96,7 @@ class UsuarioDAO{
 
     //VERIFICAR INICIO DE SESIÓN
     public function verificarCredenciales($email, $password){
-        $sql = "SELECT * FROM users WHERE email = :email";
+        $sql = "SELECT * FROM usuario WHERE email = :email";
         $values = [
             ':email' => $email,
         ];
@@ -126,7 +126,7 @@ class UsuarioDAO{
 
     //VERIFICACIÓN PARA NO REGISTRAR 2 CORREOS IGUALES
     public function verificarCorreoRepetido($email){
-        $sql = "SELECT * FROM users WHERE email = :email";
+        $sql = "SELECT * FROM usuario WHERE email = :email";
         $values = [
             ':email' => $email,
         ];

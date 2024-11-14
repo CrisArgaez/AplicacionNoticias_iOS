@@ -1,5 +1,5 @@
 <?php
-include '../2Capa_Negocio/usuario.php';
+include '../2_CapaNegocio/usuario.php';
 include 'JsonResponse.php';
 
 //SUCCESS
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
     }else{
-        $response->failed("Rellena todos los datos solicitados", BAD_REQUEST);
+        $response->failed("El valor de nombre completo es " . $datos['nombre_completo'], BAD_REQUEST);
     }
 }
 

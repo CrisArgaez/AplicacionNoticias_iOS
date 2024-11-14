@@ -1,5 +1,5 @@
 <?php
-include '../3Capa_Persistencia/NoticiaDAO.php';
+include '../3_CapaPersistencia/NoticiaDAO.php';
 
 class Noticia {
     private $id;

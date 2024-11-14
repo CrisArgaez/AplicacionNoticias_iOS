@@ -1,7 +1,7 @@
 <?php
 
-require_once "../4Capa_Datos/Conexion.php";
-require_once "../2Capa_Negocio/noticia.php";
+require_once "../4_CapaDatos/Conexion.php";
+require_once "../2_CapaNegocio/noticia.php";
 
 class NoticiaDAO{
     private $DataSource;
@@ -12,7 +12,7 @@ class NoticiaDAO{
 
     //CONSULTAR NOTICIA POR ID
     public function consultar($id){
-        $sql = "SELECT * FROM noticias WHERE id = :id";
+        $sql = "SELECT * FROM noticia WHERE id = :id";
         $values = [
             ':id' => $id
         ];
@@ -21,7 +21,7 @@ class NoticiaDAO{
 
     //AGREGAR UNA NUEVA NOTICIA
     public function crear(Noticia $noticia) {
-        $sql = "INSERT INTO noticias (titulo, autor, fecha_publicacion, pais, descripcion, categoría, cantidad_likes, cantidad_dislikes, ciudad, imagen_principal) 
+        $sql = "INSERT INTO noticia (titulo, autor, fecha_publicacion, pais, descripcion, categoría, cantidad_likes, cantidad_dislikes, ciudad, imagen_principal) 
                 VALUES (:titulo, :autor, :fecha_publicacion, :pais, :descripcion, :categoría, :cantidad_likes, :cantidad_dislikes, :ciudad, :imagen_principal)";
                 
         $values = [
@@ -61,7 +61,7 @@ class NoticiaDAO{
         $ciudad = $noticia->getCiudad() ?? $noticiaActual['ciudad'];
         $imagen_principal = $noticia->getImagenPrincipal() ?? $noticiaActual['imagen_principal'];
     
-        $sql = "UPDATE noticias 
+        $sql = "UPDATE noticia 
                 SET titulo = :titulo, 
                     autor = :autor, 
                     fecha_publicacion = :fecha_publicacion, 
@@ -93,7 +93,7 @@ class NoticiaDAO{
      
     //ELIMINAR UNA NOTICIA ESPECÍFICA POR ID
 	public function eliminar($id){
-        $sql = "DELETE FROM noticias WHERE id = :id";
+        $sql = "DELETE FROM noticia WHERE id = :id";
         $values = [
             ':id' => $id
         ];

@@ -1,5 +1,5 @@
 <?php
-include '../3Capa_Persistencia/UsuarioDAO.php';
+include '../3_CapaPersistencia/UsuarioDAO.php';
 
 class Usuario {
     private $id;
@@ -29,7 +29,7 @@ class Usuario {
     
     public function registrarUsuario(){
         $usuarioDAO = new UsuarioDAO();
-        return $usuarioDAO->agregar($this);
+        return $usuarioDAO->crear($this);
     }
 
     public function actualizarUsuario($id){

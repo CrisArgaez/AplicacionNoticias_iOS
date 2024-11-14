@@ -1,5 +1,5 @@
 <?php
-include '../2Capa_Negocio/usuario.php';
+include '../2_CapaNegocio/usuario.php';
 include 'JsonResponse.php';
 
 //SUCCESS
